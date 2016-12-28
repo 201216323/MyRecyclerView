@@ -2,7 +2,6 @@ package com.example.tangyangkai.myview;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,22 +62,6 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             });
 
 
-            if (position == 0) {
-                viewHolder.tvStickyHeader.setVisibility(View.VISIBLE);
-                viewHolder.tvStickyHeader.setText(cityModel.getFirstPinYin());
-                viewHolder.itemView.setTag(FIRST_STICKY_VIEW);
-            } else {
-                if (!TextUtils.equals(cityModel.getFirstPinYin(), cityLists.get(position - 1).getFirstPinYin())) {
-                    viewHolder.tvStickyHeader.setVisibility(View.VISIBLE);
-                    viewHolder.tvStickyHeader.setText(cityModel.getFirstPinYin());
-                    viewHolder.itemView.setTag(HAS_STICKY_VIEW);
-                } else {
-                    viewHolder.tvStickyHeader.setVisibility(View.GONE);
-                    viewHolder.itemView.setTag(NONE_STICKY_VIEW);
-                }
-            }
-
-            viewHolder.itemView.setContentDescription(cityModel.getFirstPinYin());
         }
 
 
@@ -92,14 +75,13 @@ public class CityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public class CityViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvStickyHeader, tvCityName;
+        TextView tvCityName;
         RelativeLayout rlContentWrapper;
 
 
         public CityViewHolder(View itemView) {
             super(itemView);
 
-            tvStickyHeader = (TextView) itemView.findViewById(R.id.tv_sticky_header_view);
             rlContentWrapper = (RelativeLayout) itemView.findViewById(R.id.rl_content_wrapper);
             tvCityName = (TextView) itemView.findViewById(R.id.tv_name);
         }

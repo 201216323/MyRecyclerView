@@ -41,7 +41,6 @@
                 android:layout_height="match_parent"
                 android:scrollbars="none" />
 
-            <include layout="@layout/layout_sticky_header_view" />
         </FrameLayout>
 
         <com.example.tangyangkai.myview.CircleTextView

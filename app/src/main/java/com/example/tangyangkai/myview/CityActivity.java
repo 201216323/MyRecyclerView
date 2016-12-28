@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.github.promeg.pinyinhelper.Pinyin;
@@ -20,7 +19,7 @@ import java.util.Set;
 public class CityActivity extends Activity implements MySlideView.onTouchListener, CityAdapter.onItemClickListener {
 
 
-    private List<City> cityList = new ArrayList<>();
+    public  static List<City> cityList = new ArrayList<>();
     private Set<String> firstPinYin = new LinkedHashSet<>();
     public static List<String> pinyinList = new ArrayList<>();
     private PinyinComparator pinyinComparator;
@@ -30,7 +29,6 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
 
 
     private RecyclerView recyclerView;
-    private TextView tvStickyHeaderView;
     private CityAdapter adapter;
     private LinearLayoutManager layoutManager;
 
@@ -50,7 +48,6 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
         mySlideView = (MySlideView) findViewById(R.id.my_slide_view);
         circleTxt = (CircleTextView) findViewById(R.id.my_circle_view);
         pinyinComparator = new PinyinComparator();
-        tvStickyHeaderView = (TextView) findViewById(R.id.tv_sticky_header_view);
         for (int i = 0; i < City.stringCitys.length; i++) {
             City city = new City();
             city.setCityName(City.stringCitys[i]);
@@ -60,13 +57,12 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
         Collections.sort(cityList, pinyinComparator);
         for (City city : cityList) {
             firstPinYin.add(city.getCityPinyin().substring(0, 1));
+
         }
         for (String string : firstPinYin) {
             pinyinList.add(string);
         }
-
         mySlideView.setListener(this);
-
 
         recyclerView = (RecyclerView) findViewById(R.id.rv_sticky_example);
         layoutManager = new LinearLayoutManager(this);
@@ -74,46 +70,7 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
         adapter = new CityAdapter(getApplicationContext(), cityList);
         adapter.setListener(this);
         recyclerView.setAdapter(adapter);
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-
-
-                View stickyInfoView = recyclerView.findChildViewUnder(
-                        tvStickyHeaderView.getMeasuredWidth() / 2, 5);
-
-                if (stickyInfoView != null && stickyInfoView.getContentDescription() != null) {
-                    tvStickyHeaderView.setText(String.valueOf(stickyInfoView.getContentDescription()));
-                }
-
-                View transInfoView = recyclerView.findChildViewUnder(
-                        tvStickyHeaderView.getMeasuredWidth() / 2, tvStickyHeaderView.getMeasuredHeight() + 1);
-
-                if (transInfoView != null && transInfoView.getTag() != null) {
-                    int transViewStatus = (int) transInfoView.getTag();
-                    int dealtY = transInfoView.getTop() - tvStickyHeaderView.getMeasuredHeight();
-                    if (transViewStatus == CityAdapter.HAS_STICKY_VIEW) {
-                        if (transInfoView.getTop() > 0) {
-                            tvStickyHeaderView.setTranslationY(dealtY);
-                        } else {
-                            tvStickyHeaderView.setTranslationY(0);
-                        }
-                    } else if (transViewStatus == CityAdapter.NONE_STICKY_VIEW) {
-                        tvStickyHeaderView.setTranslationY(0);
-                    }
-                }
-
-
-            }
-        });
-
-
+        recyclerView.addItemDecoration(new StickyDecoration(getApplicationContext()));
     }
 
     @Override
@@ -146,8 +103,7 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
                 break;
             }
         }
-//        recyclerView.scrollToPosition(selectPosition);
-        scroll2Position(selectPosition);
+        scrollPosition(selectPosition);
     }
 
 
@@ -159,7 +115,7 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
     }
 
 
-    private void scroll2Position(int index) {
+    private void scrollPosition(int index) {
         int firstPosition = layoutManager.findFirstVisibleItemPosition();
         int lastPosition = layoutManager.findLastVisibleItemPosition();
         if (index <= firstPosition) {
@@ -171,4 +127,6 @@ public class CityActivity extends Activity implements MySlideView.onTouchListene
             recyclerView.scrollToPosition(index);
         }
     }
+
+
 }

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -34,7 +33,6 @@ public class MySlideView extends View {
     private int yDown, yMove, mTouchSlop;
     private boolean isSlide;
     private String selectTxt;
-    private Handler handler = new Handler();
 
     public MySlideView(Context context) {
         this(context, null);
