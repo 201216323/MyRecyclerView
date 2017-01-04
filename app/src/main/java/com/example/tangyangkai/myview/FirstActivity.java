@@ -2,16 +2,14 @@ package com.example.tangyangkai.myview;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 
 public class FirstActivity extends Activity {
 
 
-    private Button cityBtn, mainBtn, wangyiBtn;
+    private Button cityBtn, mainBtn, wangyiBtn, swipeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +40,13 @@ public class FirstActivity extends Activity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(FirstActivity.this, WangYiActivity.class));
+            }
+        });
+        swipeBtn = (Button) findViewById(R.id.swipeRefresh_btn);
+        swipeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(FirstActivity.this, SecondActivity.class));
             }
         });
 

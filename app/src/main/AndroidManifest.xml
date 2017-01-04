@@ -15,9 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CityActivity"></activity>
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".WangYiActivity"></activity>
+        <activity android:name=".CityActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".WangYiActivity" />
+        <activity android:name=".SecondActivity"></activity>
     </application>
 
 </manifest>

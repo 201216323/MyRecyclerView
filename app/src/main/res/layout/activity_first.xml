@@ -22,9 +22,16 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="侧滑删除" />
+
     <Button
         android:id="@+id/wangyi_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="网易栏目" />
+
+    <Button
+        android:id="@+id/swipeRefresh_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="swipeRefresh" />
 </LinearLayout>
