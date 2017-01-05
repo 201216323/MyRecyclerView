@@ -5,12 +5,12 @@
     android:orientation="vertical">
 
 
-    <com.example.tangyangkai.myview.MyColorView
+    <com.example.tangyangkai.recyclerview.MyColorView
         android:layout_marginTop="20dp"
         android:id="@+id/colorView"
         android:layout_width="match_parent"
         android:layout_height="40dp">
-    </com.example.tangyangkai.myview.MyColorView>
+    </com.example.tangyangkai.recyclerview.MyColorView>
 
 
 </LinearLayout>

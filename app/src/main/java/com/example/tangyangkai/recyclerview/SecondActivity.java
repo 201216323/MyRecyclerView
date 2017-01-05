@@ -1,4 +1,4 @@
-package com.example.tangyangkai.myview;
+package com.example.tangyangkai.recyclerview;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.tangyangkai.myview.refresh.MyRefreshRecyclerView;
+import com.example.tangyangkai.recyclerview.refresh.MyRefreshRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

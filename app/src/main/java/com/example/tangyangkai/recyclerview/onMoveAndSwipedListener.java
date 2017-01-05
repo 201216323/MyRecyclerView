@@ -1,4 +1,4 @@
-package com.example.tangyangkai.myview;
+package com.example.tangyangkai.recyclerview;
 
 /**
  * Created by tangyangkai on 16/5/17.

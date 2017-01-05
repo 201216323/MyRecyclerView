@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.tangyangkai.myview.FiveActivity">
+    tools:context="com.example.tangyangkai.recyclerview.FiveActivity">
 
 
-    <com.example.tangyangkai.myview.MyBesselView
+    <com.example.tangyangkai.recyclerview.MyBesselView
         android:id="@+id/my_besselview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

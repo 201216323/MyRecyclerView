@@ -5,8 +5,8 @@
     android:layout_height="match_parent">
 
 
-    <com.example.tangyangkai.myview.MyRecyclerView
+    <com.example.tangyangkai.recyclerview.MyRecyclerView
         android:id="@+id/my_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></com.example.tangyangkai.myview.MyRecyclerView>
+        android:layout_height="wrap_content"></com.example.tangyangkai.recyclerview.MyRecyclerView>
 </LinearLayout>

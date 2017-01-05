@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/divider"
     android:orientation="vertical"
-    tools:context="com.example.tangyangkai.myview.FourActivity">
+    tools:context="com.example.tangyangkai.recyclerview.FourActivity">
 
 
     <ScrollView
@@ -18,7 +18,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <com.example.tangyangkai.myview.MyQQHealthView
+            <com.example.tangyangkai.recyclerview.MyQQHealthView
                 android:id="@+id/myQQView"
                 android:layout_width="match_parent"
                 android:layout_height="530dp"

@@ -1,4 +1,4 @@
-package com.example.tangyangkai.myview;
+package com.example.tangyangkai.recyclerview;
 
 import android.content.Context;
 import android.content.res.Resources;

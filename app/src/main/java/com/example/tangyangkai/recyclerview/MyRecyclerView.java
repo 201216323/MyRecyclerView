@@ -1,4 +1,4 @@
-package com.example.tangyangkai.myview;
+package com.example.tangyangkai.recyclerview;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;

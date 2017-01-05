@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.tangyangkai.myview.MyScrollViewActivity">
+    tools:context="com.example.tangyangkai.recyclerview.MyScrollViewActivity">
 
 
-    <com.example.tangyangkai.myview.ZoomScrollView
+    <com.example.tangyangkai.recyclerview.ZoomScrollView
         android:id="@+id/zoom_scrollview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,7 +22,7 @@
         </LinearLayout>
 
 
-    </com.example.tangyangkai.myview.ZoomScrollView>
+    </com.example.tangyangkai.recyclerview.ZoomScrollView>
 
 
 </LinearLayout>

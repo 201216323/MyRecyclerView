@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.tangyangkai.myview.CityActivity">
+    tools:context="com.example.tangyangkai.recyclerview.CityActivity">
 
     <TextView
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
         android:layout_height="match_parent">
 
 
-        <com.example.tangyangkai.myview.MySlideView
+        <com.example.tangyangkai.recyclerview.MySlideView
             android:id="@+id/my_slide_view"
             android:layout_width="30dp"
             android:layout_height="match_parent"
@@ -43,7 +43,7 @@
 
         </FrameLayout>
 
-        <com.example.tangyangkai.myview.CircleTextView
+        <com.example.tangyangkai.recyclerview.CircleTextView
             android:id="@+id/my_circle_view"
             android:layout_width="50dp"
             android:layout_height="50dp"

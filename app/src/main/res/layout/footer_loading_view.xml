@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp">
 
-        <com.example.tangyangkai.myview.refresh.CircleProgressView
+        <com.example.tangyangkai.recyclerview.refresh.CircleProgressView
             android:id="@+id/footer_progress"
             android:layout_width="30dp"
             android:layout_height="30dp"

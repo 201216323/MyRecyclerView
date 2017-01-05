@@ -16,7 +16,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
-        sha1="34e0f1680fbb413ac81fe1c30a59b91b28dd054f">
+        sha1="46a6ad710addace5fcdcb6960a3dfea9f99c1752">
         <dex dex="/Users/tangyangkai/Documents/github/MyRecyclerView/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_7123750441d2521c332475edb3ed810d1a4f2dc1/classes.dex" />
     </item>
     <item
@@ -25,7 +25,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.3"
-        sha1="24c25c2067ef5a85fa7289ed589caafddf0116f6">
+        sha1="a52d737d687c1ae6241b21b822e4dc5a129e4c42">
         <dex dex="/Users/tangyangkai/Documents/github/MyRecyclerView/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_e3aa7ccf2c11103b7cea6a26731dc761f0a7b9cd/classes.dex" />
     </item>
     <item
