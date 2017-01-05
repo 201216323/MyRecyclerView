@@ -1,6 +1,7 @@
 package com.example.tangyangkai.myview;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.tangyangkai.myview.refresh.MyRefreshRecyclerView;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -17,9 +20,10 @@ import java.util.Random;
 public class SecondActivity extends AppCompatActivity {
 
     private SwipeRefreshLayout swipeRefreshLayout;
-    private RecyclerView recyclerView;
-    private List<Integer> integerList = new ArrayList<>();
+    private MyRefreshRecyclerView recyclerView;
+    private List<String> integerList = new ArrayList<>();
     private MyAdapter myAdapter;
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +33,67 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     private void init() {
-        getData();
         swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipe_layout);
-        recyclerView = (RecyclerView) findViewById(R.id.recycler);
+        recyclerView = (MyRefreshRecyclerView) findViewById(R.id.recycler);
         myAdapter = new MyAdapter();
-        recyclerView.setAdapter(myAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+
+        swipeRefreshLayout.setColorSchemeResources(R.color.red,
+                R.color.orange,
+                R.color.green,
+                R.color.blue);
+
+        swipeRefreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
+            }
+        });
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getData();
+                recyclerView.setAdapter(myAdapter);
+                myAdapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1500);
+
+
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getData();
+                        recyclerView.setAdapter(myAdapter);
+                        myAdapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(false);
+                    }
+                }, 1500);
+            }
+        });
+
+        recyclerView.setMyRefreshRecyclerViewListener(new MyRefreshRecyclerView.MyRefreshRecyclerViewListener() {
+            @Override
+            public void onLoadMore() {
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (integerList.size() > 14) {
+                            recyclerView.setLoadMore(true);
+                        } else {
+                            int randomInt = new Random().nextInt(100);
+                            integerList.add("上拉加载添加数字:" + randomInt);
+                            myAdapter.notifyDataSetChanged();
+                            recyclerView.setLoadMore(false);
+                        }
+
+                    }
+                }, 1000);
+            }
+        });
     }
 
     private void getData() {
@@ -42,7 +101,7 @@ public class SecondActivity extends AppCompatActivity {
         Random random = new Random();
         while (integerList.size() < 12) {
             int randomInt = random.nextInt(100);
-            integerList.add(randomInt);
+            integerList.add(String.valueOf(randomInt));
         }
     }
 
@@ -59,7 +118,7 @@ public class SecondActivity extends AppCompatActivity {
 
         @Override
         public void onBindViewHolder(MyViewHolder holder, int position) {
-            holder.txt.setText(String.valueOf(integerList.get(position)));
+            holder.txt.setText(integerList.get(position));
         }
 
         @Override
