@@ -6,11 +6,10 @@
     android:orientation="vertical"
     tools:context="com.example.tangyangkai.recyclerview.ThirdActivity">
 
-
-    <com.example.tangyangkai.recyclerview.MyTestView
-        android:id="@+id/mytestview"
+    <com.example.tangyangkai.recyclerview.refresh.MyCustomRecyclerView
+        android:id="@+id/recycler"
         android:layout_width="match_parent"
-        android:layout_height="200dp" />
-
+        android:layout_height="match_parent"
+        android:layout_marginTop="-60dp"></com.example.tangyangkai.recyclerview.refresh.MyCustomRecyclerView>
 
 </LinearLayout>

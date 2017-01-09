@@ -187,8 +187,8 @@ public class WangYiActivity extends AppCompatActivity implements AllTabsAdapter.
                 float value = (Float) animation.getAnimatedValue();
                 // 获取当前点坐标封装到mCurrentPosition
                 mPathMeasure.getPosTan(value, mCurrentPosition, null);
-                startView.setTranslationX(mCurrentPosition[0]);
-                startView.setTranslationY(mCurrentPosition[1]);
+                startView.setX(mCurrentPosition[0]);
+                startView.setY(mCurrentPosition[1]);
                 Log.e("tag", mCurrentPosition[0] + "@" + mCurrentPosition[1]);
 
             }

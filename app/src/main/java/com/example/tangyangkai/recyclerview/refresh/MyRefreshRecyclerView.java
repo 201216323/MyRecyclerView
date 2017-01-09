@@ -76,6 +76,8 @@ public class MyRefreshRecyclerView extends RecyclerView {
 
     @Override
     public void setAdapter(Adapter adapter) {
+
+
         LinearLayout footerLayout = new LinearLayout(getContext());
         footerLayout.setGravity(Gravity.CENTER);
         footerLayout.setLayoutParams(new ViewGroup.LayoutParams(
@@ -99,7 +101,7 @@ public class MyRefreshRecyclerView extends RecyclerView {
 
     public void setLoadMore(boolean complete) {
         if (complete) {
-            loadTxt.setText("已经全部加载完啦！！！");
+            loadTxt.setText("已经全部加载完啦!");
             circleProgressView.setVisibility(GONE);
         } else {
             footerView.setVisibility(GONE);
