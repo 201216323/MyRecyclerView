@@ -9,7 +9,7 @@ import android.widget.Button;
 public class FirstActivity extends Activity {
 
 
-    private Button cityBtn, mainBtn, wangyiBtn, swipeBtn, customBtn;
+    private Button cityBtn, mainBtn, wangyiBtn, swipeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,12 +49,6 @@ public class FirstActivity extends Activity {
                 startActivity(new Intent(FirstActivity.this, SecondActivity.class));
             }
         });
-        customBtn = (Button) findViewById(R.id.custom_btn);
-        customBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(FirstActivity.this, ThirdActivity.class));
-            }
-        });
+
     }
 }

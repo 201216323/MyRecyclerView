@@ -33,11 +33,7 @@
         android:id="@+id/swipeRefresh_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="swipeRefresh" />
+        android:text="下拉刷新与上拉加载" />
 
-    <Button
-        android:id="@+id/custom_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="自定义刷新加载" />
+
 </LinearLayout>
