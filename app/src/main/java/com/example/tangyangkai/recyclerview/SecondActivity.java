@@ -49,33 +49,17 @@ public class SecondActivity extends AppCompatActivity {
                 swipeRefreshLayout.setRefreshing(true);
             }
         });
-        mHandler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                getData();
-                recyclerView.setAdapter(myAdapter);
-                myAdapter.notifyDataSetChanged();
-                swipeRefreshLayout.setRefreshing(false);
-            }
-        }, 1500);
+        refresh();
 
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                mHandler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        getData();
-                        recyclerView.setAdapter(myAdapter);
-                        myAdapter.notifyDataSetChanged();
-                        swipeRefreshLayout.setRefreshing(false);
-                    }
-                }, 1500);
+                refresh();
             }
         });
 
-        recyclerView.setMyRefreshRecyclerViewListener(new MyRefreshRecyclerView.MyRefreshRecyclerViewListener() {
+        recyclerView.setMyLoadListener(new MyRefreshRecyclerView.MyLoadListener() {
             @Override
             public void onLoadMore() {
                 mHandler.postDelayed(new Runnable() {
@@ -103,6 +87,20 @@ public class SecondActivity extends AppCompatActivity {
             int randomInt = random.nextInt(100);
             integerList.add(String.valueOf(randomInt));
         }
+    }
+
+    private void refresh() {
+
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                getData();
+                recyclerView.setAdapter(myAdapter);
+                myAdapter.notifyDataSetChanged();
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        }, 1500);
+
     }
 
 

@@ -13,20 +13,20 @@ public class MyRefreshAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     private RecyclerView.Adapter adapter;
     private View footerView;
+    public static final int NORMAL_VIEW_TYPE = 1;
     public static final int FOOTER_VIEW_TYPE = 2;
 
-    public MyRefreshAdapter(RecyclerView.Adapter adapter, View footerView) {
+    public MyRefreshAdapter(RecyclerView.Adapter adapter) {
         this.adapter = adapter;
-        this.footerView = footerView;
     }
 
 
     @Override
     public int getItemViewType(int position) {
-        if (position == getItemCount()-1) {
+        if (position == getItemCount() - 1) {
             return FOOTER_VIEW_TYPE;
         }
-        return adapter.getItemViewType(position);
+        return NORMAL_VIEW_TYPE;
     }
 
     @Override
@@ -34,20 +34,28 @@ public class MyRefreshAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (viewType == FOOTER_VIEW_TYPE) {
             return new RecyclerView.ViewHolder(footerView) {
             };
+        } else {
+            return adapter.onCreateViewHolder(parent, viewType);
         }
-        return adapter.onCreateViewHolder(parent, viewType);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (getItemViewType(position) != FOOTER_VIEW_TYPE) {
+        if (position == getItemCount() - 1) {
+            return;
+        } else {
             adapter.onBindViewHolder(holder, position);
         }
+
     }
 
     @Override
     public int getItemCount() {
-        return adapter.getItemCount()+1;
+        return adapter.getItemCount() + 1;
 
+    }
+
+    public void addFooterView(View footerView) {
+        this.footerView = footerView;
     }
 }

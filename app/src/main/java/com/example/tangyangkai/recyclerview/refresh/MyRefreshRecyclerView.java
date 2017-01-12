@@ -19,14 +19,14 @@ public class MyRefreshRecyclerView extends RecyclerView {
 
     private MyRefreshAdapter myRefreshAdapter;
     private View footerView;
-    private MyRefreshRecyclerViewListener myRefreshRecyclerViewListener;
+    private MyLoadListener myLoadListener;
     private boolean isLoadMore;
     private TextView loadTxt;
     private CircleProgressView circleProgressView;
 
 
-    public void setMyRefreshRecyclerViewListener(MyRefreshRecyclerViewListener myRefreshRecyclerViewListener) {
-        this.myRefreshRecyclerViewListener = myRefreshRecyclerViewListener;
+    public void setMyLoadListener(MyLoadListener myLoadListener) {
+        this.myLoadListener = myLoadListener;
     }
 
     public MyRefreshRecyclerView(Context context) {
@@ -62,7 +62,7 @@ public class MyRefreshRecyclerView extends RecyclerView {
                         loadTxt.setText("正在加载...");
                         circleProgressView.setVisibility(VISIBLE);
                         footerView.setVisibility(VISIBLE);
-                        myRefreshRecyclerViewListener.onLoadMore();
+                        myLoadListener.onLoadMore();
                     }
                 }
             }
@@ -77,7 +77,6 @@ public class MyRefreshRecyclerView extends RecyclerView {
     @Override
     public void setAdapter(Adapter adapter) {
 
-
         LinearLayout footerLayout = new LinearLayout(getContext());
         footerLayout.setGravity(Gravity.CENTER);
         footerLayout.setLayoutParams(new ViewGroup.LayoutParams(
@@ -91,11 +90,12 @@ public class MyRefreshRecyclerView extends RecyclerView {
         footerLayout.addView(loadTxt);
         footerView = footerLayout;
         footerView.setVisibility(GONE);
-        myRefreshAdapter = new MyRefreshAdapter(adapter, footerView);
+        myRefreshAdapter = new MyRefreshAdapter(adapter);
+        myRefreshAdapter.addFooterView(footerView);
         super.setAdapter(myRefreshAdapter);
     }
 
-    public interface MyRefreshRecyclerViewListener {
+    public interface MyLoadListener {
         void onLoadMore();
     }
 

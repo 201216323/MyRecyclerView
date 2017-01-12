@@ -59,7 +59,6 @@ public class CircleProgressView extends View {
             canvas.save();
         }
         canvas.restore();
-
     }
 
     @Override

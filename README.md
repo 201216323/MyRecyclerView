@@ -24,3 +24,9 @@
 
 
 
+###RecyclerView实现的支持下拉刷新与上拉加载的SwipeRefreshLayout。
+SwipeRefreshLayout作为官方的下拉刷新控件，简洁美观的风格使其广泛应用在项目中。美中不足的是SwipeRefreshLayout缺少上拉加载的效果，今天结合RecyclerView实现一个支持下拉刷新与上拉加载的SwipeRefreshLayout。
+
+看一下最后实现的效果图：
+
+![这里写图片描述](http://img.blog.csdn.net/20170110150342096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdHlrMDkxMA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
