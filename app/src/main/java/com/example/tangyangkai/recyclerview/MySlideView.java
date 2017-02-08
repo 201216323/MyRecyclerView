@@ -156,4 +156,12 @@ public class MySlideView extends View {
         mTextHeight = mHeight / CityActivity.pinyinList.size();
         setMeasuredDimension(width, height);
     }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        if (visibility != VISIBLE) {
+            mTextHeight = mHeight / CityActivity.pinyinList.size();
+        }
+    }
 }
